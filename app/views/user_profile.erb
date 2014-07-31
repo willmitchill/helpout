@@ -1,17 +1,43 @@
-<% if current_user %>
+
+
+<% if current_user.id == @user.id %>
   <h2> Welcome, <%= @current_user.username.capitalize %>!</h2>
+
+
+
+  <div class="container">
+    <form action='/users/<%= @current_user.id %>' method="post" enctype="multipart/form-data">
+      <div>
+        <label>Profile Picture</label>
+        <input type="file" name="uploaded_file">
+      </div>
+      <div>
+        <button type="submit">Upload!</button>
+      </div>
+    </form>
+  </div>
+
+  <form action="/user_profile" method="post">
+          <div>
+              <label for="bio">Bio:</label>
+              <textarea name="bio" cols="25" rows="3"></textarea>
+          </div>
+          <div>
+              <input type="submit" value="submit" />
+              <input type="reset" value="reset" />
+          </div>
+  </form>
 <% end %>
 
-<h1>User Profile</h1>
-<div class="container">
-  <form action='/user_profile' method="post" enctype="multipart/form-data">
-    <div>
-      <label>Profile Picture</label>
-      <input type="file" name="uploaded_file">
-    </div>
-    <div>
-      <button type="submit">Upload!</button>
-    </div>
-  </form>
-    <div id='chill'><img src='<%= @user.file.url %>'/></div>
-</div>
+<div id='chill'><img src='<%= @user.file.url %>'/></div>
+
+
+
+<h2> <%= @user.first_name %> <%= @user.last_name %> </h2>
+<h3>Bio:</h3> <%= @user.bio %>
+
+<h3>Projects:</h3>
+
+<% @user_projects.each do |project| %>
+  <%= project.name %>
+<% end %>

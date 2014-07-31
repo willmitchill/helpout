@@ -2,10 +2,11 @@ class Uploader < CarrierWave::Uploader::Base
   storage :file
 
   def store_dir
-    "uploads/#{model.class.name.underscore}/#{model.id}"
+    "uploads/avatar/#{model.id}"
   end
-  #
-  # def filename
-  #   "#{SecureRandom.base64}.#{file.extension}"
-  # end
+
+  def default_url
+    "uploads/avatar/unknown-person.jpg"
+  end
+
 end

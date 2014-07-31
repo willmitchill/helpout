@@ -95,23 +95,22 @@ end
 
 ####### USER PROFILE #######
 
-get '/user_profile' do
-  @users = User.all
-  @user = User.find_by(params[:id])
-  @user_id = params[:id]
+get '/users/:id' do
+  @user_projects = Project.where("user_id = ?", params[:id].to_i)
+  @user = User.find(params[:id])
   erb :'user_profile'
 end
 
-post '/user_profile' do
+post '/users/:id' do
     current_user.file = params[:uploaded_file]
     current_user.save
-    redirect "/user_profile"
+    redirect "/users/#{params[:id]}"
 end
-
 
 ###### PROJECT PAGE #########
 
-get 'project/:id' do
+get 'projects/:id' do
+
   @project_id = Project.find_by(params[:id])
-  erb :'project/project_profile'
+  erb :'project_profile'
 end

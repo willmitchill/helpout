@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140730205259) do
+ActiveRecord::Schema.define(version: 20140731122212) do
 
   create_table "projects", force: true do |t|
     t.string   "name"
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 20140730205259) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "file"
+    t.string   "bio"
   end
 
 end
