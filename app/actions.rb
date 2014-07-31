@@ -82,14 +82,13 @@ post '/new_project' do
   end
 end
 
-get '/profile/:id' do
-  @user_id = User.find_by(params[:id])
-  erb :'profile/user_profile'
+get '/user_profile' do
+  erb :user_profile
 end
 
-get 'project/:id' do
-  @project_id = Project.find_by(params[:id])
-  erb :'project/project_profile'
+get '/projects/:id' do
+  @project_by_id = Project.find_by(params[:id])
+  erb :project_profile
 end
 
 
