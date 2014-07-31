@@ -13,6 +13,8 @@ get '/' do
   erb :index
 end
 
+######### LOGIN / LOGOUT ###########
+
 get '/login' do
   erb :login
 end
@@ -30,6 +32,14 @@ post '/login' do
     erb :login
   end
 end
+
+post '/logout' do
+  session[:user_id] = nil
+  redirect '/'
+end
+
+
+###### SIGN UP #######
 
 get '/signup' do
   erb :signup
@@ -52,10 +62,8 @@ post '/signup' do
   end
 end
 
-post '/logout' do
-  session[:user_id] = nil
-  redirect '/'
-end
+###### DASHBOARD #######
+
 
 get '/projects' do
   @projects = Project.all.order(:start_date)
@@ -84,33 +92,21 @@ post '/new_project' do
   end
 end
 
-<<<<<<< HEAD
+
 ####### USER PROFILE #######
 
-get '/users/:id' do
-  @users = User.all.order(:first_name)
+get '/user_profile' do
+  @users = User.all
   @user = User.find_by(params[:id])
   @user_id = params[:id]
-  erb :'profile/user_profile'
+  erb :'user_profile'
 end
 
-post '/users/:id' do
-=======
-get '/user_profile' do
-  erb :user_profile
-end
-
-get '/projects/:id' do
-  @project_by_id = Project.find_by(params[:id])
-  erb :project_profile
-end
->>>>>>> 9ad2ada146b9571731d9586f215af778c752c729
-
+post '/user_profile' do
     current_user.file = params[:uploaded_file]
     current_user.save
-    redirect "/users/#{params[:id]}"
+    redirect "/user_profile"
 end
-
 
 
 ###### PROJECT PAGE #########
