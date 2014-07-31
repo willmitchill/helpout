@@ -1,11 +1,23 @@
 
 require 'pry'
+
 ####HELPERS#####
 
 helpers do
   def current_user
     @current_user ||= User.find(session[:user_id]) if
     session[:user_id]
+  end
+
+  def youtube_embed(youtube)
+    if youtube[/youtu\.be\/([^\?]*)/]
+      youtube_id = $1
+    else
+      youtube[/^.*((v\/)|(embed\/)|(watch\?))\??v?=?([^\&\?]*).*/]
+      youtube_id = $5
+    end
+
+  %Q{<iframe title="YouTube video player" width="640" height="390" src="http://www.youtube.com/embed/#{ youtube_id }" frameborder="0" allowfullscreen></iframe>}
   end
 end
 
@@ -66,7 +78,6 @@ end
 
 
 get '/projects' do
-  @projects = Project.all.order(:start_date)
   erb :projects
 end
 
@@ -77,41 +88,34 @@ get '/new_project' do
 end
 
 post '/new_project' do
+
   @project = Project.new(
     name: params[:name],
     start_date: params[:start_date],
     end_date: params[:end_date],
     location: params[:location],
     bio: params[:bio],
-    number_of_vols: params[:number_of_vols]
-    )
+    number_of_vols: params[:number_of_vols],
+    youtube: params[:youtube]
+      )
   if @project.save
     redirect '/projects'
   else
-    erb :new_projects
+    erb :new_project
   end
 end
 
 
 ####### USER PROFILE #######
 
-get '/user_profile' do
-  @users = User.all
-  @user = User.find_by(params[:id])
-  @user_id = params[:id]
-  erb :'user_profile'
-end
 
-post '/user_profile' do
-    current_user.file = params[:uploaded_file]
-    current_user.save
-    redirect "/user_profile"
-end
 
 
 ###### PROJECT PAGE #########
 
-get 'project/:id' do
-  @project_id = Project.find_by(params[:id])
-  erb :'project/project_profile'
+get '/projects/:id' do
+
+  @project= Project.find(params[:id]) 
+  @youtube = @project.youtube 
+  erb :'project_profile'
 end

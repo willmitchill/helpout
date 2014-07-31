@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140730205259) do
+ActiveRecord::Schema.define(version: 20140731222709) do
 
   create_table "projects", force: true do |t|
     t.string   "name"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20140730205259) do
     t.integer  "user_id"
     t.string   "bio"
     t.integer  "number_of_vols"
+    t.string   "youtube"
   end
 
   create_table "upvotes", force: true do |t|

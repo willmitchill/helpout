@@ -1,6 +1,10 @@
-<h1>Make the world a better place and join a project!</h1>
 <% if current_user %>
 <p>Welcome <%= @current_user.first_name %> </p>
+<a href='/user_profile'>Profile</a>
+
+<h1>Make the world a better place and join a project!</h1>
+
+
 <h2> Check out some of our upcoming volunteer projects! </h2>
 <%end%>
 
@@ -8,13 +12,15 @@
   <li><a href='/projects/<%=project.id%>'><%= project.name %></a></li>
 <% end %>
 
+<h3> Or create your own <a href='/new_project'>here</a></h3>
+
 <% if current_user %>
 <br></br>
 <form action="/logout" method="post">
 <input type="submit" value="Logout">
 </form>
 
-<a href='/user_profile'>Profile</a>
+
 
 
 
