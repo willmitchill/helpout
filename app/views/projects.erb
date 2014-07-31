@@ -3,7 +3,11 @@
 <p>Welcome <%= @current_user.first_name %> </p>
 <h2> Check out some of our upcoming volunteer projects! </h2>
 <%end%>
-<%= @projects.name %>
+
+<% Project.all.each do |project| %>
+  <li><a href='/projects/<%=project.id%>'><%= project.name %></a></li>
+<% end %>
+
 <% if current_user %>
 <br></br>
 <form action="/logout" method="post">
@@ -13,4 +17,9 @@
 <a href='/users/<%= @current_user.id %>'>Profile</a>
 
 
+<<<<<<< HEAD
 <% end %>
+=======
+
+
+>>>>>>> 9ad2ada146b9571731d9586f215af778c752c729

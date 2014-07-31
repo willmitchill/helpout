@@ -84,6 +84,7 @@ post '/new_project' do
   end
 end
 
+<<<<<<< HEAD
 ####### USER PROFILE #######
 
 get '/users/:id' do
@@ -94,6 +95,16 @@ get '/users/:id' do
 end
 
 post '/users/:id' do
+=======
+get '/user_profile' do
+  erb :user_profile
+end
+
+get '/projects/:id' do
+  @project_by_id = Project.find_by(params[:id])
+  erb :project_profile
+end
+>>>>>>> 9ad2ada146b9571731d9586f215af778c752c729
 
     current_user.file = params[:uploaded_file]
     current_user.save
