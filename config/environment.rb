@@ -9,6 +9,9 @@ require 'sinatra/activerecord'
 
 require 'pry'
 
+require 'carrierwave'
+require 'carrierwave/orm/activerecord'
+
 APP_ROOT = Pathname.new(File.expand_path('../../', __FILE__))
 APP_NAME = APP_ROOT.basename.to_s
 
@@ -21,6 +24,14 @@ configure do
   set :session_secret, ENV['SESSION_KEY'] || 'lighthouselabssecret'
 
   set :views, File.join(Sinatra::Application.root, "app", "views")
+end
+
+
+CarrierWave.configure do |config|
+  config.permissions = 0666
+  config.directory_permissions = 0777
+  config.enable_processing = false
+  config.root = "#{APP_ROOT}/public"
 end
 
 # Set up the database and models

@@ -48,8 +48,8 @@ post '/signup' do
     session[:user_id] = @user.id
     redirect '/projects'
   else
-    erb :'signup' 
-  end  
+    erb :'signup'
+  end
 end
 
 post '/logout' do
@@ -61,6 +61,8 @@ get '/projects' do
   @projects = Project.all.order(:start_date)
   erb :projects
 end
+
+##### NEW PROJECT ######
 
 get '/new_project' do
   erb :new_project
@@ -82,17 +84,27 @@ post '/new_project' do
   end
 end
 
-get '/profile/:id' do
-  @user_id = User.find_by(params[:id])
+####### USER PROFILE #######
+
+get '/users/:id' do
+  @users = User.all.order(:first_name)
+  @user = User.find_by(params[:id])
+  @user_id = params[:id]
   erb :'profile/user_profile'
 end
+
+post '/users/:id' do
+
+    current_user.file = params[:uploaded_file]
+    current_user.save
+    redirect "/users/#{params[:id]}"
+end
+
+
+
+###### PROJECT PAGE #########
 
 get 'project/:id' do
   @project_id = Project.find_by(params[:id])
   erb :'project/project_profile'
 end
-
-
-
-
-

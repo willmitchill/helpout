@@ -1,4 +1,4 @@
-<h1>projects page</h1>
+<h1>Make the world a better place and join a project!</h1>
 <% if current_user %>
 <p>Welcome <%= @current_user.first_name %> </p>
 <h2> Check out some of our upcoming volunteer projects! </h2>
@@ -9,7 +9,8 @@
 <form action="/logout" method="post">
 <input type="submit" value="Logout">
 </form>
+
+<a href='/users/<%= @current_user.id %>'>Profile</a>
+
+
 <% end %>
-
-
-

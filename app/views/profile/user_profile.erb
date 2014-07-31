@@ -1,1 +1,19 @@
-user_profile.erb
+<h1>User Profile</h1>
+<div class="container">
+
+  <form action='/users/<%= @user_id %>' method="post" enctype="multipart/form-data">
+    <div>
+      <label>Profile Picture</label>
+      <input type="file" name="uploaded_file">
+    </div>
+    <div>
+      <button type="submit">Upload!</button>
+    </div>
+  </form>
+
+
+    <div id='chill'><img src='<%= @user.file.url %>'/></div>
+
+
+
+</div>
