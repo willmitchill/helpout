@@ -1,0 +1,39 @@
+
+#navwrapper {
+  position: fixed;
+  width: 100%;
+  z-index: 5;
+
+}
+
+#chill img {
+  height: 150px;
+  width: 150px;
+  border-radius:50%;
+}
+
+
+
+.imgswag{
+  width: 100%;
+  content: url('http://images6.fanpop.com/image/photos/33300000/Puppy-dogs-33308352-1440-900.jpg')no-repeat center center fixed;
+
+  width: 100%
+  color: #fff;
+  height:28em;
+
+
+}
+
+.facebook img{
+  width: 30px;
+}
+
+
+.fa-facebook-square {
+  margin-top:13px;
+}
+
+#lightblue {
+  background-color: black;
+}

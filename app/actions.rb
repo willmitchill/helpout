@@ -90,13 +90,15 @@ end
 post '/new_project' do
 
   @project = Project.new(
+
     name: params[:name],
     start_date: params[:start_date],
     end_date: params[:end_date],
     location: params[:location],
     bio: params[:bio],
     number_of_vols: params[:number_of_vols],
-    youtube: params[:youtube]
+    youtube: params[:youtube],
+    user_id: current_user.id
       )
   if @project.save
     redirect '/projects'
