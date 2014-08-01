@@ -1,9 +1,16 @@
+* {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 300;
+}
+
+body {
+  padding-top: 50px;
+}
 
 #navwrapper {
-  position: fixed;
+  /*position: fixed;*/
   width: 100%;
   z-index: 5;
-
 }
 
 #chill img {
@@ -12,28 +19,38 @@
   border-radius:50%;
 }
 
-
-
-.imgswag{
+#imgswag {
+  /*background-image: url(http://news.buzzbuzzhome.com/wp-content/uploads/2013/09/Vancouver-housing-market.jpg);*/
+  background-image: url(http://jamcouver.multiwebzone.com/wp-content/uploads/2013/07/Tourism-Vancouver.jpg);
   width: 100%;
-  content: url('http://images6.fanpop.com/image/photos/33300000/Puppy-dogs-33308352-1440-900.jpg')no-repeat center center fixed;
-
-  width: 100%
-  color: #fff;
-  height:28em;
-
-
+  height: 38em;
+  background-size: cover;
+  background-position: 0% 42%;
+  background-repeat: no-repeat;
+  /*-webkit-filter: blur(2px);*/
 }
+
+/*.imgswag{
+  width: 100%;
+  content: url('http://news.buzzbuzzhome.com/wp-content/uploads/2013/09/Vancouver-housing-market.jpg')no-repeat center center fixed;
+  color: #fff;
+  height: 28em;
+}*/
 
 .facebook img{
   width: 30px;
 }
 
-
 .fa-facebook-square {
   margin-top:13px;
 }
 
-#lightblue {
-  background-color: black;
+#jumbo {
+  background-color: #6698D1; /*E84417*/
+  color: white;
 }
+
+#jumboform {
+  background-color: #6698D1;
+}
+
