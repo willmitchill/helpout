@@ -108,7 +108,7 @@ end
 
 ####### USER PROFILE #######
 
-<<<<<<< HEAD
+
 get '/users/:id' do
   @user_projects = Project.where("user_id = ?", params[:id].to_i)
   @user = User.find(params[:id])
@@ -120,21 +120,14 @@ post '/users/:id' do
     current_user.save
     redirect "/users/#{params[:id]}"
 end
-=======
 
->>>>>>> 0714f34df1dca423c2585e2c3f95c7e18bdbe70f
 
 ###### PROJECT PAGE #########
 
-<<<<<<< HEAD
-get 'projects/:id' do
 
-  @project_id = Project.find_by(params[:id])
-=======
 get '/projects/:id' do
 
-  @project= Project.find(params[:id]) 
-  @youtube = @project.youtube 
->>>>>>> 0714f34df1dca423c2585e2c3f95c7e18bdbe70f
+  @project= Project.find(params[:id])
+  @youtube = @project.youtube
   erb :'project_profile'
 end
