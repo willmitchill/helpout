@@ -1,36 +1,54 @@
-<center><h1>Sign Up</h1>
-<div class="jumbotron" id="jumboform">
-  <form action='/signup' method="post">
-    <div>
-      <label>Username:</label>
-      <input type="text" name="username" required>
-    </div>
-    <div>
-      <label>First Name:</label>
-      <input type="text" name="first_name"required>
-    </div>
-    <div>
-      <label>Last Name:</label>
-      <input type="text" name="last_name"required>
-    </div>
-    <div>
-      <label>Organization Name:</label>
-      <input type="text" name="org_name"required>
-    </div>
-    <div>
-      <label>Email:</label>
-      <input type="email" name="email"required>
-    </div>
-    <div>
-      <label>Password:</label>
-      <input type="password" name="password"required>
-    </div>
-    <div>
-      <input type="submit" value="Submit">
-    </div>
-    <div>
-      <input type="reset" value="Reset all fields">
-    </div>
-  </form>
+<div class="container" align="center">
+  <h1>Sign Up</h1>
+</div> 
+
+<div class="container" align="center">
+  <div class="jumbotron" id="jumboform">
+    <form action='/signup' method="post" class="form-horizontal">
+      <div class="form-group">
+        <label class="control-label col-xs-2">Username</label>
+          <div class="col-xs-10">
+            <input type="text" class="form-control" name="username" placeholder="Username"required>
+          </div>  
+      </div>
+      <div class="form-group">
+        <label class="control-label col-xs-2">First Name</label>
+          <div class="col-xs-10">
+            <input type="text" class="form-control" name="first_name" placeholder="First Name" required>
+          </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-xs-2">Last Name</label>
+          <div class="col-xs-10">
+            <input type="text" class="form-control" name="last_name" placeholder="Last Name" required>
+          </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-xs-2">Organization Name</label>
+          <div class="col-xs-10">
+            <input type="text" class="form-control" name="org_name" placeholder="Organization Name" required>
+          </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-xs-2">Email</label>
+          <div class="col-xs-10">
+            <input type="email" class="form-control" name="email" placeholder="Email" required>
+          </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-xs-2">Password</label>
+          <div class="col-xs-10">
+            <input type="password" class="form-control" name="password" placeholder="Password" required>
+          </div>
+      </div>
+      <div>
+        <input type="submit" class="btn btn-default" value="Submit">
+        <input type="reset" class="btn btn-default" value="Reset">
+      </div>
+    </form>
+  </div>
 </div>
-<a href="/projects">Sign up later</a>
+
+<div class="container" align="center">
+  <a href="/projects">Sign up later</a>
+</div>

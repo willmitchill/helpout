@@ -1,22 +1,27 @@
 
+<div align="center">
+  <% if current_user.id == @user.id %>
+    <h2> Welcome, <%= @current_user.username %>!</h2>
+</div>
 
-<% if current_user.id == @user.id %>
-  <h2> Welcome, <%= @current_user.username.capitalize %>!</h2>
+<div class="container" id='chill' align="center"><img src='<%= @user.file.url %>'/></div>
 
+<br>
 
+<div class="container text-center">
+  <div class="jumbotron" id="jumbo">
+    <h2> <%= @user.first_name.capitalize %> <%= @user.last_name %> </h2>
+    <h3>Bio:</h3> <%= @user.bio %>
 
-  <div class="container">
-    <form action='/users/<%= @current_user.id %>' method="post" enctype="multipart/form-data">
-      <div>
-        <label>Profile Picture</label>
-        <input type="file" name="uploaded_file">
-      </div>
-      <div>
-        <button type="submit">Upload!</button>
-      </div>
-    </form>
+    <h3>Projects:</h3>
+
+    <% @user_projects.each do |project| %>
+      <%= project.name %>
+    <% end %>
   </div>
+</div>
 
+<div align="center">
   <form action="/user_profile" method="post">
           <div>
               <label for="bio">Bio:</label>
@@ -28,16 +33,25 @@
           </div>
   </form>
 <% end %>
+</div>
 
-<div id='chill'><img src='<%= @user.file.url %>'/></div>
+<br>
+
+<div class="jumbotron" align="center">
+  <div class="container">
+    <form action='/users/<%= @current_user.id %>' method="post" enctype="multipart/form-data">
+      <div>
+        <label>Profile Picture</label>
+        <input type="file" name="uploaded_file">
+      </div>
+      <div>
+        <button type="submit">Upload!</button>
+      </div>
+    </form>
+  </div>
+</div>
 
 
 
-<h2> <%= @user.first_name %> <%= @user.last_name %> </h2>
-<h3>Bio:</h3> <%= @user.bio %>
 
-<h3>Projects:</h3>
 
-<% @user_projects.each do |project| %>
-  <%= project.name %>
-<% end %>

@@ -1,17 +1,44 @@
+<div class="container" align="center" id="blue">
+  <h1><%=@project.name %></h1>
+</div><br>
 
-<h1>Name: <%=@project.name %></h1>
-<ul>When is it?! <%=@project.start_date%> - <%=@project.end_date%></ul>
-<ul> Where is it?! <%=@project.location%></ul>
-<ul> Wut is it?! <%=@project.bio%></ul>
-<ul> How many volunteers are needed?! <%=@project.number_of_vols%></ul>
+<div class="jumbotron">
+  <div class="container" align="center">
+    <%= youtube_embed(@youtube)%>
+  </div>
+</div>
 
-<%= youtube_embed(@youtube)%>
+<!-- <div class="container">
+  <div class="jumbotron text-center" id="jumbo">
+    <h1>Name: <%=@project.name %></h1>
+    <ul>When is it?! <%=@project.start_date%> - <%=@project.end_date%></ul>
+    <ul> Where is it?! <%=@project.location%></ul>
+    <ul> Wut is it?! <%=@project.bio%></ul>
+    <ul> How many volunteers are needed?! <%=@project.number_of_vols%></ul>
+  </div>
+</div>
+ -->
 
-<% if current_user %>
-<form action="/user_profile">
-    <input type="submit" value="Join this Project!">
-</form>
-<%end%>
+<div class="container-fluid">
+  <div class="jumbotron text-center" id="jumbo">
+    <!-- <h1><%=@project.name %></h1> -->
+    <h3>Date <br> <%=@project.start_date%> - <%=@project.end_date%> <br><br>
+    Location <br> <%=@project.location%> <br><br>
+    Description <br> <%=@project.bio%> <br><br>
+    Volunteers Needed <br> <%=@project.number_of_vols%></h3>
+  </div>
+</div>
+
+<div class="container" align="center">
+  <% if current_user %>
+  <form action="/user_profile">
+      <input type="submit" class="btn btn-primary" value="Join this Project!">
+  </form>
+  <%end%>
+</div>
+
+<br>
+<br>
 
 
 
