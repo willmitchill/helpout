@@ -19,6 +19,7 @@ helpers do
 
   %Q{<iframe title="YouTube video player" width="640" height="390" src="http://www.youtube.com/embed/#{ youtube_id }" frameborder="0" allowfullscreen></iframe>}
   end
+
 end
 
 get '/' do
@@ -90,13 +91,15 @@ end
 post '/new_project' do
 
   @project = Project.new(
+
     name: params[:name],
     start_date: params[:start_date],
     end_date: params[:end_date],
     location: params[:location],
     bio: params[:bio],
     number_of_vols: params[:number_of_vols],
-    youtube: params[:youtube]
+    youtube: params[:youtube],
+    user_id: current_user.id
       )
   if @project.save
     redirect '/projects'
@@ -121,12 +124,27 @@ post '/users/:id' do
     redirect "/users/#{params[:id]}"
 end
 
+####RATE USER #####
+
+post '/users/:id' do
+  @projects =Project.all
+  @rating=Rating.new(
+    user_id: params[:user].id,
+    score: params[:score])
+
+end
+
+
+
+
 
 ###### PROJECT PAGE #########
 
 get '/projects/:id' do
 
-  @project= Project.find(params[:id]) 
-  @youtube = @project.youtube 
+  @project= Project.find(params[:id])
+  @youtube = @project.youtube
   erb :'project_profile'
 end
+
+
