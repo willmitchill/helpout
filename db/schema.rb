@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140801123853) do
+ActiveRecord::Schema.define(version: 20140802034318) do
 
   create_table "commitments", force: true do |t|
     t.integer  "user_id"
@@ -32,8 +32,9 @@ ActiveRecord::Schema.define(version: 20140801123853) do
     t.string   "youtube"
   end
 
-  create_table "upvotes", force: true do |t|
+  create_table "ratings", force: true do |t|
     t.integer  "user_id"
+    t.integer  "score"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

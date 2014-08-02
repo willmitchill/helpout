@@ -121,20 +121,23 @@ get '/users/:id' do
 end
 
 post '/users/:id' do
-  @user = User.find(params[:id].to_i)
+
+  @rated_user = User.find(params[:id])
+
+    @rating = Rating.create(user_id: params[:id], score: params[:score])
+
+    if @rating
+      redirect "/"
+    else
+      redirect "/admin"
+    end
+
     current_user.file = params[:uploaded_file]
     current_user.save
     redirect "/users/#{params[:id]}"
 
-    @rating=Rating.new(
-    user_id: @user.id,
-    score: params[:score])
-    if @rating.save
-    redirect "/"
-  else
-    erb :user_profile
   end
-end
+
 
 ####RATE USER #####
 
