@@ -14,11 +14,15 @@
 <h3>Or create your own <a href='/new_project'>here</a></h3>
 
 <% if current_user %>
-  <br></br>
+<br></br>
+<form action="/logout" method="post">
+<input type="submit" value="Logout">
+</form>
 
-  <form action="/logout" method="post">
-    <input type="submit" value="Logout">
-  </form>
 
-  <a href='/users/<%= @current_user.id %>'>Profile</a>
+<a href='/users/<%= @current_user.id %>'>Profile</a>
+
+
+
+
 <% end %>

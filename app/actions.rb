@@ -19,6 +19,7 @@ helpers do
 
   %Q{<iframe title="YouTube video player" width="640" height="390" src="http://www.youtube.com/embed/#{ youtube_id }" frameborder="0" allowfullscreen></iframe>}
   end
+
 end
 
 get '/' do
@@ -113,7 +114,6 @@ end
 
 get '/users/:id' do
   @projects = Project.all
-
   @user_commitments = Commitment.where("user_id = ?", params[:id].to_i)
   @user_projects = Project.where("user_id = ?", params[:id].to_i)
   @user = User.find(params[:id])
@@ -121,14 +121,33 @@ get '/users/:id' do
 end
 
 post '/users/:id' do
+  @user = User.find(params[:id].to_i)
     current_user.file = params[:uploaded_file]
     current_user.save
     redirect "/users/#{params[:id]}"
+
+    @rating=Rating.new(
+    user_id: @user.id,
+    score: params[:score])
+    if @rating.save
+    redirect "/"
+  else
+    erb :user_profile
+  end
+end
+
+####RATE USER #####
+
+post '/users/rating/:id' do
+
+
 end
 
 
-###### PROJECT PAGE #########
 
+
+
+###### PROJECT PAGE #########
 
 get '/projects/:id' do
 
@@ -136,6 +155,7 @@ get '/projects/:id' do
   @youtube = @project.youtube
   erb :'project_profile'
 end
+
 
 post '/projects/:id' do
   current_project_id = params[:id].to_i
