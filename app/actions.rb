@@ -112,6 +112,9 @@ end
 
 
 get '/users/:id' do
+  @projects = Project.all
+
+  @user_commitments = Commitment.where("user_id = ?", params[:id].to_i)
   @user_projects = Project.where("user_id = ?", params[:id].to_i)
   @user = User.find(params[:id])
   erb :'user_profile'
@@ -132,4 +135,17 @@ get '/projects/:id' do
   @project= Project.find(params[:id])
   @youtube = @project.youtube
   erb :'project_profile'
+end
+
+post '/projects/:id' do
+  current_project_id = params[:id].to_i
+  @commitment = Commitment.new(
+    user_id: current_user.id,
+    project_id: current_project_id
+  )
+  if @commitment.save
+    redirect '/projects'
+  else
+    erb :new_project
+  end
 end

@@ -1,21 +1,19 @@
 
 <h1>Name: <%=@project.name %></h1>
-<ul>When is it?! <%=@project.start_date%> - <%=@project.end_date%></ul>
-<ul> Where is it?! <%=@project.location%></ul>
-<ul> Wut is it?! <%=@project.bio%></ul>
-<ul> How many volunteers are needed?! <%=@project.number_of_vols%></ul>
+
+<div>
+  <div>When is it?! <%=@project.start_date%> - <%=@project.end_date%></div>
+  <div> Where is it?! <%=@project.location%></div>
+  <div> Wut is it?! <%=@project.bio%></div>
+  <div> How many volunteers are needed?! <%=@project.number_of_vols%></div>
+</div>
 
 <%= youtube_embed(@youtube)%>
 
-<% if current_user %>
-<form action="/user_profile">
-    <input type="submit" value="Join this Project!">
-</form>
-<%end%>
 
 
-
-
-
-
-
+<% if @project.user_id != current_user.id %>
+  <form action="/projects/<%= @project.id %>" method='post'>
+      <input type="submit" value="Join this Project!">
+  </form>
+<% end %>
