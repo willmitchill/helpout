@@ -1,34 +1,36 @@
-<center><h1>Signup</h1>
-
-<form action='/signup' method="post">
-  <div>
-    <label>Username:</label>
-    <input type="text" name="username" required>
-  </div>
-  <div>
-    <label>First Name:</label>
-    <input type="text" name="first_name"required>
-  </div>
-  <div>
-    <label>Last Name:</label>
-    <input type="text" name="last_name"required>
-  </div>
-  <div>
-    <label>Organization Name:</label>
-    <input type="text" name="org_name"required>
-  </div>
-  <div>
-    <label>Email:</label>
-    <input type="email" name="email"required>
-  </div>
-  <div>
-    <label>Password:</label>
-    <input type="password" name="password"required>
-  </div>
-  <div>
-    <input type="submit" value="Submit">
-  </div>
-</form>
-
+<center><h1>Sign Up</h1>
+<div class="jumbotron" id="jumboform">
+  <form action='/signup' method="post">
+    <div>
+      <label>Username:</label>
+      <input type="text" name="username" required>
+    </div>
+    <div>
+      <label>First Name:</label>
+      <input type="text" name="first_name"required>
+    </div>
+    <div>
+      <label>Last Name:</label>
+      <input type="text" name="last_name"required>
+    </div>
+    <div>
+      <label>Organization Name:</label>
+      <input type="text" name="org_name"required>
+    </div>
+    <div>
+      <label>Email:</label>
+      <input type="email" name="email"required>
+    </div>
+    <div>
+      <label>Password:</label>
+      <input type="password" name="password"required>
+    </div>
+    <div>
+      <input type="submit" value="Submit">
+    </div>
+    <div>
+      <input type="reset" value="Reset all fields">
+    </div>
+  </form>
+</div>
 <a href="/projects">Sign up later</a>
-

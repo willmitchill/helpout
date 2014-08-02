@@ -113,27 +113,37 @@ end
 
 
 get '/users/:id' do
+  @projects = Project.all
+  
+  @user_commitments = Commitment.where("user_id = ?", params[:id].to_i)
   @user_projects = Project.where("user_id = ?", params[:id].to_i)
   @user = User.find(params[:id])
   erb :'user_profile'
 end
 
 post '/users/:id' do
+@user = User.find(params[:id].to_i)
     current_user.file = params[:uploaded_file]
     current_user.save
     redirect "/users/#{params[:id]}"
+
+    @rating=Rating.new(
+    user_id: @user.id,
+    score: params[:score])
+    if @rating.save
+    redirect "/"
+  else
+    erb :user_profile
+  end
 end
 
 ####RATE USER #####
 
-post '/users/:id' do
-  @projects =Project.all
-  @rating=Rating.new(
-    user_id: params[:user].id,
-    score: params[:score])
+post '/users/rating/:id' do
+  
 
 end
-
+  
 
 
 
@@ -148,3 +158,15 @@ get '/projects/:id' do
 end
 
 
+post '/projects/:id' do
+  current_project_id = params[:id].to_i
+  @commitment = Commitment.new(
+    user_id: current_user.id,
+    project_id: current_project_id
+  )
+  if @commitment.save
+    redirect '/projects'
+  else
+    erb :new_project
+  end
+end

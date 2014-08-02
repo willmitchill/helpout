@@ -12,6 +12,13 @@
 
 ActiveRecord::Schema.define(version: 20140802034318) do
 
+  create_table "commitments", force: true do |t|
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "project_id"
+  end
+
   create_table "projects", force: true do |t|
     t.string   "name"
     t.date     "start_date"
