@@ -49,7 +49,7 @@
 <h2>Projects I've committed to:</h2>
 
 <% @user_commitments.each do |commitment| %>
-
+  <% binding.pry %>
   <%= commitment.project.name %>
 <% end %>
 
@@ -69,7 +69,8 @@
             </select>
             <input type="submit" value="Submit Rating">
           </form>
-<%end%>
+<% end %>
+
 
       
   

@@ -122,10 +122,12 @@ get '/users/:id' do
 end
 
 post '/users/:id' do
-@user = User.find(params[:id].to_i)
+
     current_user.file = params[:uploaded_file]
     current_user.save
     redirect "/users/#{params[:id]}"
+
+    
 
     @rating=Rating.new(
     user_id: @user.id,
