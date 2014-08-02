@@ -53,3 +53,83 @@ body {
 #jumboform {
   background-color: #6698D1;
 }
+
+
+
+/*search stuff*/
+
+
+.search-box {
+position: fixed;
+float:right;
+top:1;
+z-index: 2;
+color: #EF2C05;
+
+}
+
+.type_text {
+  width: 175px;
+  height: 20px;
+  font-size:15px;
+}
+
+
+.list-wrap label {
+  color:#00BDE8;
+  margin-right: 30px;
+
+
+}
+
+.list-count {
+  width:30%;
+  padding:0.5em;
+  color:#c0c0c0;
+
+}
+
+li  {
+  transition-property: margin, background-color, border-color;
+  transition-duration: .8s, .4s, .4s;
+  transition-timing-function: ease-in-out, ease, ease;
+  transition: opacity .8s ease-in-out;
+  -moz-transition: opacity .8s ease-in-out;
+  -webkit-transition: opacity .8s ease-in-out;
+}
+
+.hiding {
+  opacity:.1;
+}
+
+.hidden {
+  display:none;
+}
+
+ul {
+  float:left;
+  width:100%;
+  margin:2em 0;
+  padding:0;
+  position:relative;
+}
+
+ul:before {
+  position:absolute;
+  left:-2.8em;
+  font-size:3em;
+  text-align:right;
+  color:#ededed;
+  transform:rotate(-90deg);
+}
+
+li {
+  width:100%;
+  list-style:none;
+  color:#333;
+  position:relative;
+}
+
+li:hover {
+  background-color:#fff;
+}

@@ -149,3 +149,31 @@ post '/projects/:id' do
     erb :new_project
   end
 end
+
+
+
+###### ADMIN ACTIONS #########
+
+get '/admin' do
+  erb :'/admin'
+end
+
+get '/admin/project/user/:id' do
+
+  @user = User.find(params[:id])
+  erb :'/project_edit'
+
+end
+
+get '/admin/users' do
+  erb :'/admin_user_view'
+end
+
+
+delete '/admin/users/:id' do
+
+  @user = User.find(params[:id])
+  @user.destroy
+
+  redirect '/admin'
+end

@@ -1,0 +1,19 @@
+<h1>Yo</h1>
+<div class="each">
+  <% User.all.each do |user| %>
+    <p><%= user.id %>
+    <%= user.username %>
+    <%= user.email %>
+    <%= user.first_name %>
+    <%= user.last_name %></p>
+    <p><a href="/admin/project/user/<%= user.id %>">User Projects</a></p>
+    <div class= "delete">
+      <form action='/admin/users/ <%= user.id %>' method='post'>
+        <div style="margin:0;padding:0">
+          <input name="_method" type="hidden" value="delete" />
+        </div>
+        <input type='submit' value='Delete'></input>
+      </form>
+    </div>
+  <% end %>
+</div>
