@@ -114,19 +114,28 @@ end
 
 get '/users/:id' do
   @projects = Project.all
+
   @user_commitments = Commitment.where("user_id = ?", params[:id].to_i)
   @user_projects = Project.where("user_id = ?", params[:id].to_i)
   @user = User.find(params[:id])
+  @rated_user = Rating.where(params[:id])
+  @score_average = @rated_user.average(:score).round(1)
+    if @rated_user==nil
+      puts "no ratings yet!"
+    else
+      @rated_user
+    end
   erb :'user_profile'
 end
 
 post '/users/:id' do
 
-  @rated_user = User.find(params[:id])
+  
+  @rating = Rating.create(user_id: params[:id], score: params[:score])
 
-    @rating = Rating.create(user_id: params[:id], score: params[:score])
-
+  # @rated_user = User.find(params[:id])
     if @rating
+
       redirect "/"
     else
       redirect "/admin"
@@ -137,17 +146,6 @@ post '/users/:id' do
     redirect "/users/#{params[:id]}"
 
   end
-
-
-####RATE USER #####
-
-post '/users/rating/:id' do
-
-
-end
-
-
-
 
 
 ###### PROJECT PAGE #########

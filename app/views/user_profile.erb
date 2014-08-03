@@ -3,6 +3,7 @@
   <% if current_user.id == @user.id %>
     <h2> Welcome, <%= @current_user.username %>!</h2>
 </div>
+<% end %>
 
 <div class="container" id='chill' align="center"><img src='<%= @user.file.url %>'/></div>
 
@@ -17,7 +18,7 @@
 
     <% @user_projects.each do |project| %>
       <%= project.name %>
-    <% end %>
+
   </div>
 </div>
 
@@ -69,10 +70,19 @@
 
 <% @user_commitments.each do |commitment| %>
   <%= commitment.project.name %>
-<% end %>
+<%end%>
+
+<h2>This user has an overall rating of <%= @score_average%></h2>
+
+
 
 
 <% if @current_user.id != params[:id].to_i %>
+
+
+
+
+
   <h2>Rate a user</h2>
 
   <form method="post" action='/users/<%= @user.id %>'>
@@ -86,5 +96,4 @@
       </select>
     <input type="submit" value="Submit Rating">
   </form>
-<% end %>
-
+<%end%>

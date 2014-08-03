@@ -14,10 +14,17 @@
 <div class="container-fluid">
   <div class="jumbotron text-center" id="jumbo">
     <!-- <h1><%=@project.name %></h1> -->
-    <h3>Date <br> <%=@project.start_date%> - <%=@project.end_date%> <br><br>
+   <h3> <br>Date <br> <%=@project.start_date%> - <%=@project.end_date%> <br><br>
     Location <br> <%=@project.location%> <br><br>
     Description <br> <%=@project.bio%> <br><br>
-    Volunteers Needed <br> <%=@project.number_of_vols%></h3>
+    Volunteers Needed <br> </h3><% @vol_count=@project.number_of_vols - @project.commitments.count %>
+    <% if @vol_count <=0 %>
+    <%="you reached your goal! This project is a go!"%>
+    <% @vol_count==0%>
+    <%else%>
+    <%=@vol_count%>
+    <%end%>
+
   </div>
 </div>
 
