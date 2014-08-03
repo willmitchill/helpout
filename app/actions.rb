@@ -46,7 +46,7 @@ post '/login' do
   end
 end
 
-post '/logout' do
+get '/logout' do
   session[:user_id] = nil
   redirect '/'
 end
@@ -118,13 +118,15 @@ get '/users/:id' do
   @user_commitments = Commitment.where("user_id = ?", params[:id].to_i)
   @user_projects = Project.where("user_id = ?", params[:id].to_i)
   @user = User.find(params[:id])
-  @rated_user = Rating.where(params[:id])
-  @score_average = @rated_user.average(:score).round(1)
-    if @rated_user==nil
-      puts "no ratings yet!"
-    else
-      @rated_user
-    end
+
+  @rated_user = Rating.where(user_id: params[:id].to_i)
+
+  if @rated_user.average(:score).nil?
+    puts "no ratings yet!"
+    @score_average=0.0
+  else
+    @score_average = @rated_user.average(:score).round(1)
+  end
   erb :'user_profile'
 end
 
