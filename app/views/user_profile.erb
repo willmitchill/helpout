@@ -55,3 +55,36 @@
 
 
 
+<h3>My Projects:</h3>
+
+<% @user_projects.each do |project| %>
+  <%= project.name %>
+<% end %>
+
+
+
+
+
+<h2>Projects I've committed to:</h2>
+
+<% @user_commitments.each do |commitment| %>
+  <%= commitment.project.name %>
+<% end %>
+
+
+<% if @current_user.id != params[:id].to_i %>
+  <h2>Rate a user</h2>
+
+  <form method="post" action='/users/<%= @user.id %>'>
+  <label for="score">Rating: </label>
+    <select name="score">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      </select>
+    <input type="submit" value="Submit Rating">
+  </form>
+<% end %>
+

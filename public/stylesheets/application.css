@@ -19,14 +19,13 @@ body {
   border-radius:50%;
 }
 
-/*#imgswag {
-  background-image: url(https://farm3.staticflickr.com/2895/14626172857_c5e35f6f38_o.jpg);
+
+.imgswag{
   width: 100%;
-  height: 46em;
-  background-size: cover;
-  background-repeat: no-repeat;
-  -webkit-filter: blur(2px);
-}*/
+  content: url('http://news.buzzbuzzhome.com/wp-content/uploads/2013/09/Vancouver-housing-market.jpg')no-repeat center center fixed;
+  color: #fff;
+  height: 28em;
+}
 
 .facebook img{
   width: 30px;
@@ -45,6 +44,7 @@ body {
   background-color: #6698D1;
 }
 
+
 #joinproj {
   background-image: url(http://extra.upmc.com/100806/images/86537853_web.jpg);
   background-position: 50% 17%;
@@ -59,4 +59,4 @@ body {
 
 #about {
   margin: 2em 10em 0em 10em;
-}
+

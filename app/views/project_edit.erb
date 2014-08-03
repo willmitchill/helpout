@@ -1,0 +1,14 @@
+<p><% z = User.find(@user.id) %>
+<% t = z.jobs %></p>
+<div class="index">
+<% t.each do |job| %>
+  <div class="each">
+    <a href="jobs/<%= job.id %>"><%= job.title %></a>
+    <p><%= job.description %></p>
+    <p><%= job.example %></p>
+    <p>$<%= job.price %></p>
+
+  </div>
+  <br>
+
+<% end %>

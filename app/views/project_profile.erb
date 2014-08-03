@@ -1,3 +1,4 @@
+
 <div class="container" align="center" id="blue">
   <h1><%=@project.name %></h1>
 </div><br>
@@ -8,16 +9,7 @@
   </div>
 </div>
 
-<!-- <div class="container">
-  <div class="jumbotron text-center" id="jumbo">
-    <h1>Name: <%=@project.name %></h1>
-    <ul>When is it?! <%=@project.start_date%> - <%=@project.end_date%></ul>
-    <ul> Where is it?! <%=@project.location%></ul>
-    <ul> Wut is it?! <%=@project.bio%></ul>
-    <ul> How many volunteers are needed?! <%=@project.number_of_vols%></ul>
-  </div>
-</div>
- -->
+
 
 <div class="container-fluid">
   <div class="jumbotron text-center" id="jumbo">
@@ -31,7 +23,7 @@
 
 <div class="container" align="center">
   <% if current_user %>
-  <form action="/user_profile">
+  <form action="/projects/<%= @project.id %>" method="post">
       <input type="submit" class="btn btn-primary" value="Join this Project!">
   </form>
   <%end%>
@@ -39,10 +31,4 @@
 
 <br>
 <br>
-
-
-
-
-
-
 

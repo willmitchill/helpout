@@ -19,6 +19,7 @@ helpers do
 
   %Q{<iframe title="YouTube video player" width="640" height="390" src="http://www.youtube.com/embed/#{ youtube_id }" frameborder="0" allowfullscreen></iframe>}
   end
+
 end
 
 get '/' do
@@ -112,24 +113,91 @@ end
 
 
 get '/users/:id' do
+  @projects = Project.all
+  @user_commitments = Commitment.where("user_id = ?", params[:id].to_i)
   @user_projects = Project.where("user_id = ?", params[:id].to_i)
   @user = User.find(params[:id])
   erb :'user_profile'
 end
 
 post '/users/:id' do
+
+  @rated_user = User.find(params[:id])
+
+    @rating = Rating.create(user_id: params[:id], score: params[:score])
+
+    if @rating
+      redirect "/"
+    else
+      redirect "/admin"
+    end
+
     current_user.file = params[:uploaded_file]
     current_user.save
     redirect "/users/#{params[:id]}"
+
+  end
+
+
+####RATE USER #####
+
+post '/users/rating/:id' do
+
+
 end
 
 
-###### PROJECT PAGE #########
 
+
+
+###### PROJECT PAGE #########
 
 get '/projects/:id' do
 
   @project= Project.find(params[:id])
   @youtube = @project.youtube
   erb :'project_profile'
+end
+
+
+post '/projects/:id' do
+
+  current_project_id = params[:id].to_i
+  @commitment = Commitment.new(
+    user_id: current_user.id,
+    project_id: current_project_id
+  )
+  if @commitment.save
+    redirect '/projects'
+  else
+    erb :new_project
+  end
+end
+
+
+
+###### ADMIN ACTIONS #########
+
+get '/admin' do
+  erb :'/admin'
+end
+
+get '/admin/project/user/:id' do
+
+  @user = User.find(params[:id])
+  erb :'/project_edit'
+
+end
+
+get '/admin/users' do
+  erb :'/admin_user_view'
+end
+
+
+delete '/admin/users/:id' do
+
+  @user = User.find(params[:id])
+  @user.destroy
+
+  redirect '/admin'
 end
