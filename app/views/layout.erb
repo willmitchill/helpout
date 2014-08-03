@@ -36,17 +36,30 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">GoHelp</a>
+            <a class="navbar-brand" href="/">goHelp</a>
           </div>
 
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right">            
+            <ul class="nav navbar-nav navbar-right">
+            
+            <% if @current_user %>
+              <li><a href="/users/:id">Profile</a></li>
+              <li><a href="/projects">Projects</a></li>
+              <li><a href="/new_project">New Project</a></li>
+              <li><a href="/logout">Log Out</a></li>
+              <li class="facebook">
+                <i class="fa fa-facebook-square fa-2x"></i>
+              </li>
+
+            <% else %>
               <li><a href="/login">Login</a></li>
               <li><a href="/signup">Sign Up</a></li>
               <li class="facebook">
                 <i class="fa fa-facebook-square fa-2x"></i>
               </li>
+            <% end %>
+
             </ul>
           </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->

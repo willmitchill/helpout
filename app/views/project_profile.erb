@@ -3,28 +3,30 @@
   <h1><%=@project.name %></h1>
 </div><br>
 
-<div class="jumbotron">
-  <div class="container" align="center">
-    <%= youtube_embed(@youtube)%>
-  </div>
-</div>
-
-
-
-<div class="container-fluid">
-  <div class="jumbotron text-center" id="jumbo">
-    <!-- <h1><%=@project.name %></h1> -->
-    <h3>Date <br> <%=@project.start_date%> - <%=@project.end_date%> <br><br>
-    Location <br> <%=@project.location%> <br><br>
-    Description <br> <%=@project.bio%> <br><br>
-    Volunteers Needed <br> <%=@project.number_of_vols%></h3>
+<div class="jumbotron" id="jumbo">
+  <div class="container">
+    <div class="row">    
+      <div class="col-md-8"><br><br>
+        <div class="container">
+          <%= youtube_embed(@youtube)%><br><br>
+        </div>
+      </div>
+      
+      <div class="col-md-4">
+        <!-- <h1><%=@project.name %></h1> -->
+        <h4>Date</h4> <h3><%=@project.start_date%> - <%=@project.end_date%></h3><br>
+        <h4>Location</h4> <h3><%=@project.location%></h3> <br>
+        <h4>Description</h4> <h3><%=@project.bio%> </h3><br>
+        <h4>Volunteers Needed</h4> <h3><%=@project.number_of_vols%></h3>
+      </div>
+    </div>
   </div>
 </div>
 
 <div class="container" align="center">
   <% if current_user %>
   <form action="/projects/<%= @project.id %>" method="post">
-      <input type="submit" class="btn btn-primary" value="Join this Project!">
+      <input type="submit" class="btn btn-lg btn-primary" value="Join this Project!">
   </form>
   <%end%>
 </div>

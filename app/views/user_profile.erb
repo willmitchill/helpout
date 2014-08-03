@@ -8,20 +8,25 @@
 
 <br>
 
-<div class="container text-center">
-  <div class="jumbotron" id="jumbo">
-    <h2> <%= @user.first_name.capitalize %> <%= @user.last_name %> </h2>
-    <h3>Bio:</h3> <%= @user.bio %>
 
-    <h3>Projects:</h3>
+<div class="jumbotron" id="jumbo" align="center">
+  <h2> <%= @user.first_name.capitalize %> <%= @user.last_name.capitalize %> </h2>
+<!--   <h3>Bio</h3> <%= @user.bio %> -->
 
-    <% @user_projects.each do |project| %>
-      <%= project.name %>
-    <% end %>
-  </div>
+  <h3>My Projects</h3>
+
+  <% @user_projects.each do |project| %>
+    <%= project.name %>
+  <% end %>
+
+  <h3>Projects I've committed to</h3>
+
+  <% @user_commitments.each do |commitment| %>
+    <%= commitment.project.name %>
+  <% end %>
 </div>
 
-<div align="center">
+<!-- <div align="center">
   <form action="/user_profile" method="post">
           <div>
               <label for="bio">Bio:</label>
@@ -34,7 +39,7 @@
   </form>
 <% end %>
 </div>
-
+ -->
 <br>
 
 <div class="jumbotron" align="center">
@@ -45,32 +50,11 @@
         <input type="file" name="uploaded_file">
       </div>
       <div>
-        <button type="submit">Upload!</button>
+        <input type="submit" class="btn btn-default" value="Upload!" />
       </div>
     </form>
   </div>
 </div>
-
-
-
-
-
-<h3>My Projects:</h3>
-
-<% @user_projects.each do |project| %>
-  <%= project.name %>
-<% end %>
-
-
-
-
-
-<h2>Projects I've committed to:</h2>
-
-<% @user_commitments.each do |commitment| %>
-  <%= commitment.project.name %>
-<% end %>
-
 
 <% if @current_user.id != params[:id].to_i %>
   <h2>Rate a user</h2>

@@ -1,25 +1,21 @@
-<div id="bluebg">
+
 
 <br>
 
 <% if current_user %>
-<p align="center">Welcome <%= @current_user.first_name.capitalize %>!</p>
+<p id="welcome" align="center">Welcome <%= @current_user.first_name.capitalize %>!</p>
+<%end%>
+<br>
+
+<div class="jumbotron text-center" id="joinproj">
+  <h1>Make the world a better place and join a project!</h1>
+</div>
+
+<p align="center" id="upcomingproj">Upcoming Projects</p>
 
 <br>
 
-<div class="container-fluid">
-  <div class="jumbotron text-center" id="joinproj">
-    <h1>Make the world a better place and join a project!</h1>
-  </div>
-
-  <div class="jumbotron" id="jumbo">
-    <h2 align="center">Upcoming Projects</h2>
-    <%end%>
-    <br>
-  </div>
-</div>
-
-<div class="jumbotron text-center">
+<div class="jumbotron text-center" id="projlist">
     <% Project.all.each do |project| %>
       <div >
         <a href='/projects/<%=project.id%>'><%= project.name %></a>
@@ -43,6 +39,5 @@
   <a href='/users/<%= @current_user.id %>'>Profile</a>
 
   <% end %>
-</div>
 </div>
 

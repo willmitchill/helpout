@@ -19,14 +19,6 @@ body {
   border-radius:50%;
 }
 
-
-.imgswag{
-  width: 100%;
-  content: url('http://news.buzzbuzzhome.com/wp-content/uploads/2013/09/Vancouver-housing-market.jpg')no-repeat center center fixed;
-  color: #fff;
-  height: 28em;
-}
-
 .facebook img{
   width: 30px;
 }
@@ -59,4 +51,23 @@ body {
 
 #about {
   margin: 2em 10em 0em 10em;
+}
 
+#gohelplogo {
+  width: 600px;
+  height: 100%;
+}
+
+#whitejumbo {
+  background-color: white;
+}
+
+#welcome {
+  font-size: 22px;
+  color: #6698D1;
+}
+
+#upcomingproj {
+  font-size: 32px;
+  color: #6698D1;
+}
