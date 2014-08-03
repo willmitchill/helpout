@@ -1,5 +1,5 @@
 
-<div align="center">
+<div align="center" id="welcome">
   <% if current_user.id == @user.id %>
     <h2> Welcome, <%= @current_user.username %>!</h2>
 </div>
@@ -12,7 +12,7 @@
 
 <div class="jumbotron" id="jumbo" align="center">
   <h2> <%= @user.first_name.capitalize %> <%= @user.last_name.capitalize %> </h2>
-<!--   <h3>Bio</h3> <%= @user.bio %> -->
+  <h3>Bio</h3> <%= @user.bio %>
 
   <h3>My Projects</h3>
 
@@ -27,12 +27,12 @@
   <% end %>
 
   <h3>This user has an overall rating of <%= @score_average%></h3>
-    <% @user_projects.each do |project| %>
-      <%= project.name %>
-      
+  <% @user_projects.each do |project| %>
+    <%= project.name %>
+  <% end %>
 </div>
 
-<!-- <div align="center">
+<div align="center">
   <form action="/user_profile" method="post">
           <div>
               <label for="bio">Bio:</label>
@@ -43,9 +43,8 @@
               <input type="reset" value="reset" />
           </div>
   </form>
-<% end %>
 </div>
- -->
+
 <br>
 
 <div class="jumbotron" align="center">

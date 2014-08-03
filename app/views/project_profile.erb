@@ -18,24 +18,17 @@
         <h4>Date</h4> <h3><%=@project.start_date%> - <%=@project.end_date%></h3><br>
         <h4>Location</h4> <h3><%=@project.location%></h3> <br>
         <h4>Description</h4> <h3><%=@project.bio%> </h3><br>
-        <h4>Volunteers Needed</h4> <h3><% @vol_count=@project.number_of_vols - @project.commitments.count %></h3>
+        <h4>Volunteers Needed</h4> <h3><% @vol_count=@project.number_of_vols - @project.commitments.count %>
         <% if @vol_count <=0 %>
         <%="you reached your goal! This project is a go!"%>
         <% @vol_count==0%>
         <%else%>
-        <%=@vol_count%>
+        <%=@vol_count%></h3>
         <%end%>
       </div>
     </div>
   </div>
 </div>
-
-<div class="jumbotron">
-  <div class="container" align="center">
-    <%= youtube_embed(@youtube)%>
-  </div>
-</div>
-
 
 <div class="container" align="center">
   <% if current_user %>

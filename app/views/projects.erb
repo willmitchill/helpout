@@ -30,14 +30,4 @@
   </div>
 </div>
 
-<div class="container" align="center">
-  <% if current_user %>
-  <form action="/logout" method="post">
-  <input type="submit" value="Logout">
-  </form>
-
-  <a href='/users/<%= @current_user.id %>'>Profile</a>
-
-  <% end %>
-</div>
 
